@@ -1,9 +1,12 @@
 
 privileged: true
 
+global:
+  repositorybase: containernetworkfunctiondf.azurecr.io
+  imagePullSecrets: []
+
 image:
-  repository: soelvkaer/vppcontainer
-  tag: latest
+  tag: v0.1.0
   pullPolicy: IfNotPresent
 
 volumeMounts:

@@ -16,10 +16,11 @@ spec:
       annotations:
         k8s.v1.cni.cncf.io/networks: ipfwd-bridge
     spec:
+      imagePullSecrets: {{ $.Values.global.imagePullSecrets }}
       containers:
       {{ range $k, $v := .Values.cnf }}
         - name: {{ $.Chart.Name }}-{{$k}}
-          image: "{{ $.Values.image.repository }}:{{ $.Values.image.tag }}"
+          image: "{{ $.Values.global.repositorybase }}/polarapfel/vpp2/images/vppcontainer:{{ $.Values.image.tag }}"
           imagePullPolicy: {{ $.Values.image.pullPolicy }}
           securityContext:
             privileged: {{ $.Values.privileged }}
